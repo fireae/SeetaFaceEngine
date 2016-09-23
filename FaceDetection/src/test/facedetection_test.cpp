@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
   const char* img_path = "test_image.jpg";
   seeta::FaceDetection detector("seeta_fd_frontal_v1.0.bin");
 
-  detector.SetMinFaceSize(40);
+  detector.SetMinFaceSize(10);
   detector.SetScoreThresh(2.f);
   detector.SetImagePyramidScaleFactor(0.8f);
   detector.SetWindowStep(4, 4);
@@ -66,18 +66,22 @@ int main(int argc, char** argv) {
 
   cv::Rect face_rect;
   int32_t num_face = static_cast<int32_t>(faces.size());
-
+  std::cout << num_face << std::endl;
   for (int32_t i = 0; i < num_face; i++) {
     face_rect.x = faces[i].bbox.x;
     face_rect.y = faces[i].bbox.y;
     face_rect.width = faces[i].bbox.width;
     face_rect.height = faces[i].bbox.height;
+    std::cout << face_rect.x << std::endl;
+    std::cout << face_rect.y << std::endl;
+    std::cout << face_rect.width << std::endl;
+    std::cout << face_rect.height << std::endl;
 
     cv::rectangle(img, face_rect, CV_RGB(0, 0, 255), 4, 8, 0);
   }
-
-  cv::namedWindow("Test", cv::WINDOW_AUTOSIZE);
-  cv::imshow("Test", img);
-  cv::waitKey(0);
-  cv::destroyAllWindows();
+  cv::imwrite("a.png", img);
+  //cv::namedWindow("Test", cv::WINDOW_AUTOSIZE);
+  //cv::imshow("Test", img);
+  //cv::waitKey(0);
+  //cv::destroyAllWindows();
 }

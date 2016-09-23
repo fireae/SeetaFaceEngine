@@ -33,7 +33,7 @@
 #define SEETA_FD_UTIL_IMAGE_PYRAMID_H_
 
 #include <cstdint>
-#include <string>
+#include <cstring>
 
 #include "common.h"
 

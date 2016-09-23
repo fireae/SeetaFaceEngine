@@ -34,6 +34,7 @@
 
 #include <cstdint>
 #include <vector>
+#include <cstring>
 
 #include "common.h"
 #include "feature_map.h"

@@ -31,7 +31,7 @@
 
 #include "classifier/surf_mlp.h"
 
-#include <string>
+#include <cstring>
 
 namespace seeta {
 namespace fd {

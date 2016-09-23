@@ -34,11 +34,17 @@
 
 #include <cstdint>
 
+#ifdef WINDOWS
 #ifdef SEETA_EXPORTS
 #define SEETA_API __declspec(dllexport)
 #else
 #define SEETA_API __declspec(dllimport)
 #endif
+
+#else 
+#define SEETA_API
+#endif
+
 
 #define DISABLE_COPY_AND_ASSIGN(classname) \
  private: \

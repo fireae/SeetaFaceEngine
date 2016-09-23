@@ -46,7 +46,40 @@ class MathFunction {
     for (int32_t i = 0; i < len; i++)
       *(dest++) = static_cast<int32_t>(*(src++));
   }
+	
+  static inline void VectorAdd(const int32_t* x, const int32_t* y, int32_t* z,
+      int32_t len) {
+    for (int i = 0; i < len; i++) {
+      *(z + i) = (*(x + i) + *(y + i));
+    }
+  }
 
+  static inline void VectorSub(const int32_t* x, const int32_t* y, int32_t* z,
+      int32_t len) {
+    for (int i = 0; i < len; i++)
+      *(z + i) = (*(x + i)) - (*(y + i));
+  }
+
+  static inline void VectorAbs(const int32_t* src, int32_t* dest, int32_t len) {
+    for (int i = 0; i < len; i++)
+      dest[i] = (src[i] >= 0 ? src[i] : -src[i]);
+  }
+
+  static inline void Square(const int32_t* src, uint32_t* dest, int32_t len) { 
+    for (int i = 0; i < len; i++)
+      *(dest + i) = (*(src + i)) * (*(src + i));
+  }
+
+  static inline float VectorInnerProduct(const float* x, const float* y,
+      int32_t len) { 
+    float prod = 0.0;
+    for (int32_t i = 0; i < len; i++)
+      prod += x[i] * y[i];
+
+    return prod;
+  }
+
+#if 0
   static inline void VectorAdd(const int32_t* x, const int32_t* y, int32_t* z,
       int32_t len) {
     __m128i x1;
@@ -135,6 +168,9 @@ class MathFunction {
 
     return prod;
   }
+#endif
+
+
 };
 
 }  // namespace fd
